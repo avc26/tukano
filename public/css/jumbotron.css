@@ -1,7 +1,7 @@
 /* Move down content because we have a fixed navbar that is 3.5rem tall */
-/*body {
+body {
   padding-top: 3.5rem;
-}*/
+}
 .links > a {
   color: DodgerBlue;
   padding: 0 15px;
@@ -13,5 +13,69 @@
 }
 
 img{
-	width: 200px;
+  width: 150px;
+}
+
+.imgart{
+  width: 200px;
+}
+
+.articleind{
+  width: 450px;
+  position: relative;
+  margin-left: 490px;
+}
+
+.form{
+  width: 100%;
+}
+
+.col-md-4{
+  text-align: center;
+}
+
+.btn-secondary{
+    display: inline-block;
+    width: 139px;
+    padding-top: 5px;
+    border-radius: 15px;
+    height: 35px;
+    font: 3px/15px 'font-family: 'Spartan', ;';
+    /*font: 10px/39px 'FuturaPT Bold';*/
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #333;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.but{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pret{
+     font-family: 'Spartan';
+     font-size: 15px;
+       margin-bottom: 5px;
+}
+
+.desc{
+  font:10px/1 'Spartan';
+
+}
+
+h2{
+  font-family: 'Yeon Sung';
+  font-size: 30px;
+  font-weight: bold;
+}
+
+p{
+
+      font: 8px/39px 'font-family: 'Spartan', ;';
 }

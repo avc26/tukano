@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', 'IndexController@index' );
-Route::get('index2', 'IndexController@index2' );
+use App\Http\Controllers\IndexController;
 
+Route::get('/', 'IndexController@index');
+
+Route::get('page1', 'IndexController@page1');
+
+Route::get('article/{id}', 'IndexController@show')->name('articleShow');
+
+Route::get('page/add', 'IndexController@add');
+
+Route::post('page/add', 'IndexController@store')->name('articleStore');

@@ -36,19 +36,19 @@ namespace Highlight;
  */
 abstract class HighlightResult
 {
-    /** @var int the relevance score */
+    /** @var int */
     public $relevance;
 
-    /** @var string the highlighted HTML code */
+    /** @var string */
     public $value;
 
-    /** @var string the language name */
+    /** @var string */
     public $language;
 
-    /** @var bool indicates whether any illegal matches were found */
+    /** @var bool */
     public $illegal;
 
-    /** @var Mode|null top of the current mode stack */
+    /** @var Mode|null */
     public $top;
 
     /** @var \Exception|null */
