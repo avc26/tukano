@@ -5,10 +5,10 @@
 <main role="main">
 
   <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
+<!--   <div class="jumbotron">
     <div class="container">
     </div>
-  </div>
+  </div> -->
   <div class="container">
     <!-- Example row of columns -->
     <div class="row">

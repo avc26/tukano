@@ -79,3 +79,29 @@ p{
 
       font: 8px/39px 'font-family: 'Spartan', ;';
 }
+
+.links > a {
+    color: #dd9a1c;
+    padding: 0 15px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.navbar{
+  display: flex;
+  align-items: stretch;
+  align-content: center;
+  height: 100px;
+  background-color: #1f2623;
+  }
+
+  .navl{
+  width: 180px;
+  }
+
+  .row{
+    margin-top: 85px;
+  }

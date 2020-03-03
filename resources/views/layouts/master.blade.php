@@ -12,19 +12,23 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container">
+      <div class="links">
+        <a href="page1">About us</a>
+        <a href="/page/add">Menu</a>
+        <a href="#">Shop</a>
+        <a href="#">Locations</a>
+        <a href="#">Blog</a>
+      </div>
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">Home page</a>
+        <a class="navbar-brand"> 
+          <img class="navl" src="nav-logo.png">
+        </a>
       </div>
       <div class="links">
-        <a href="page1">Page1</a>
-        <a href="/page/add">AddItem</a>
-        <a href="#">Page3</a>
-        <a href="#">Page4</a>
-        <a href="#">Page5</a>
-        <a href="#">Page6</a>
-        <a href="#">Page7</a>
+        <a href="#">Franchise</a>
+        <a href="#">#TUCANOFRIENDS</a>
       </div>
     </div>
   </nav>
