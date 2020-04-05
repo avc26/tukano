@@ -5,56 +5,97 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Article;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
-    //
-    public function index(){
-        $hw='Hello world!';
-        $ms='This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.';
-        $articles=Article::select(['title', 'description', 'img', 'id', 'text'])->get();
+    public function _construct()
+    {
+    }
+
+    public function index()
+    {
+        $articles = Article::select(['title', 'description', 'img', 'id', 'text'])->get();
         //dump($articles);
-        return view('index')->with(['hw'=>$hw, 
-                                    'ms'=>$ms, 
-                                    'articles'=>$articles]);
+        return view('index')->with([
+            'articles' => $articles
+        ]);
     }
 
-    public function page1(){
-        $articles=Article::select(['title', 'description', 'img', 'text'])->get();
-        return view('page1')->with(['articles'=>$articles]);
+    public function show($id)
+    {
+        $article = Article::select(['id', 'title', 'text', 'img'])->where('id', $id)->first();
+        return view('article-content')->with([
+            'article' => $article
+        ]);
     }
 
-    protected $ms;
-    protected $hw;
-    public function _construct(){
-        $this->hw='Hello world!';
-        $this->ms='This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.';
+    public function edit($id)
+    {
+        $article = Article::select(['id', 'title', 'description', 'text', 'img'])->where('id', $id)->first();
+        return view('add-content')->with([
+            'article' => $article
+        ]);
     }
 
-    public function show($id){
-        $article=Article::select(['id', 'title', 'text', 'img'])->where('id', $id)->first();
-        return view('article-content')->with(['ms'=>$this->ms,
-                                            'hw'=>$this->hw,
-                                            'article'=>$article
-                                            ]);
-    }
-
-    public function add(){
-        return view('add-content')->with(['hw'=>$this->hw, 'ms'=>$this->ms]);
-    }
-
-    public function store(Request $request){
-        echo $request;
-        $this->validate($request, ['title'=>'required | max:25',
-                                    'description'=>'required',
-                                    'text'=>'required',
-                                    'img'=>'required']);
+    public function update(Request $request)
+    {
         $data = $request->all();
+
+        $article = Article::where('id', $data['id'])->first();
+
+        if ($request->hasFile('img')) {
+            $path = $request->file('img')->store('public');
+            $article->img = '/' . $path;
+        }
+        if (isset($data['title']) && strlen($data['title'])) {
+            $article->title = $data['title'];
+        }
+        if (isset($data['description']) && strlen($data['description'])) {
+            $article->description = $data['description'];
+        }
+        if (isset($data['text']) && strlen($data['text'])) {
+            $article->text = $data['text'];
+        }
+
+        $article->save();
+        return redirect('/');
+    }
+
+
+    public function add()
+    {
+        return view('add-content')->with([]);
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required | max:25',
+            'description' => 'required',
+            'text' => 'required',
+            'img' => 'required'
+        ]);
+
+        $path = $request->file('img')->store('public');
+
+        $data = $request->all();
+        $data['img'] = '/' . $path;
         $article = new Article;
-        $article -> fill($data);
-        $article -> save();
+        $article->fill($data);
+        $article->save();
 
         return redirect('/');
     }
-    
+
+    public function delete($id)
+    {
+        if (Auth::check()) {
+            $article = Article::select(['id', 'title', 'text', 'img'])->where('id', $id)->first();
+            $article->delete();
+            return redirect('/');
+        } else {
+            return response('Not logged in');
+        }
+    }
 }

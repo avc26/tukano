@@ -34,7 +34,7 @@ img{
   text-align: center;
 }
 
-.btn-secondary{
+.btn-secondary,.btn-danger,.btn-warning{
     display: inline-block;
     width: 139px;
     padding-top: 5px;
